@@ -1,0 +1,19 @@
+---
+const categories = Astro.props.categories ?? [];
+---
+
+<section class="filters-panel" aria-label="Recherche et filtres">
+  <label class="search-label" for="resource-search">Rechercher une ressource</label>
+  <input
+    id="resource-search"
+    type="search"
+    placeholder="Stage, bourse, Campus France..."
+    autocomplete="off"
+  />
+  <div class="category-filters" aria-label="Filtrer par catégorie">
+    <button class="filter-button active" type="button" data-category="all">Toutes</button>
+    {categories.map((category) => (
+      <button class="filter-button" type="button" data-category={category}>{category}</button>
+    ))}
+  </div>
+</section>

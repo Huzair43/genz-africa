@@ -1,0 +1,30 @@
+---
+const navItems = [
+  { href: "/", label: "Accueil" },
+  { href: "/ressources/", label: "Ressources" },
+  { href: "/a-propos/", label: "À propos" },
+  { href: "/contact/", label: "Contact" }
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <nav class="nav-shell" aria-label="Navigation principale">
+    <a class="brand" href="/" aria-label="Accueil GenZ Africa">
+      <img class="brand-logo" src="/images/logo.jpeg" alt="" width="44" height="44" />
+      <span>GenZ Africa</span>
+    </a>
+    <div class="nav-links">
+      {navItems.map((item) => (
+        <a href={item.href} class:list={{ active: currentPath === item.href }}>
+          {item.label}
+        </a>
+      ))}
+    </div>
+    <a class="nav-cta" href="mailto:bousairou@gmail.com?subject=Rejoindre%20GenZ%20Africa&body=Bonjour%2C%0A%0AJe%20souhaite%20rejoindre%20GenZ%20Africa.%0A%0ANom%20%3A%20%0APr%C3%A9nom%20%3A%20%0AFili%C3%A8re%20d%27%C3%A9tude%20ou%20fonction%20%3A%20%0ANum%C3%A9ro%20WhatsApp%20%3A%20%0A%0AMerci.">
+      Rejoindre
+    </a>
+  </nav>
+</header>
+
+

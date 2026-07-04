@@ -1,0 +1,37 @@
+---
+import CategoryBadge from "@components/CategoryBadge.astro";
+
+const { resource } = Astro.props;
+const { title, description, category, tags, readingTime, author, authorUrl, date } = resource.data;
+const formattedDate = new Intl.DateTimeFormat("fr-FR", {
+  day: "numeric",
+  month: "short",
+  year: "numeric"
+}).format(new Date(date));
+---
+
+<article
+  class="resource-card"
+  data-title={title.toLowerCase()}
+  data-description={description.toLowerCase()}
+  data-category={category}
+  data-tags={tags.join(" ").toLowerCase()}
+>
+  <div class="card-topline">
+    <CategoryBadge label={category} />
+    <span>{readingTime}</span>
+  </div>
+  <h2><a href={`/ressources/${resource.slug}/`}>{title}</a></h2>
+  <p>{description}</p>
+  <div class="tag-list">
+    {tags.slice(0, 4).map((tag) => <span>{tag}</span>)}
+  </div>
+  <footer>
+    {authorUrl ? (
+      <a class="author-link" href={authorUrl} target="_blank" rel="noreferrer">{author}</a>
+    ) : (
+      <span>{author}</span>
+    )}
+    <time datetime={date}>{formattedDate}</time>
+  </footer>
+</article>

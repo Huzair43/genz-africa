@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="GenZ Africa">
+  <rect width="64" height="64" rx="14" fill="#082f49"/>
+  <circle cx="24" cy="22" r="8" fill="#1d7fad"/>
+  <circle cx="38" cy="36" r="8" fill="#105175"/>
+  <path d="M14 42c13 5 28-1 39-17-8 18-23 29-39 26-7-1-8-7 0-9z" fill="#dff3fb"/>
+</svg>

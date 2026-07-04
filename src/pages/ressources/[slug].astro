@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+import ResourceLayout from "@layouts/ResourceLayout.astro";
+
+export async function getStaticPaths() {
+  const resources = await getCollection("ressources", ({ data }) => data.published);
+
+  return resources.map((entry) => ({
+    params: { slug: entry.slug },
+    props: {
+      entry,
+      suggestions: resources
+        .filter((resource) => resource.slug !== entry.slug)
+        .filter((resource) => resource.data.category === entry.data.category)
+        .concat(resources.filter((resource) => resource.slug !== entry.slug && resource.data.category !== entry.data.category))
+        .slice(0, 3)
+    }
+  }));
+}
+
+const { entry, suggestions } = Astro.props;
+const { Content, headings } = await entry.render();
+---
+
+<ResourceLayout entry={entry} suggestions={suggestions}>
+  <Fragment slot="toc">
+    <ol>
+      {headings.filter((heading) => heading.depth === 2).map((heading) => (
+        <li><a href={`#${heading.slug}`}>{heading.text}</a></li>
+      ))}
+    </ol>
+  </Fragment>
+  <Content />
+</ResourceLayout>

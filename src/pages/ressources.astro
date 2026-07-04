@@ -1,0 +1,79 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import ResourceCard from "@components/ResourceCard.astro";
+import SearchBar from "@components/SearchBar.astro";
+
+const resources = (await getCollection("ressources", ({ data }) => data.published)).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+const categories = [...new Set(resources.map((resource) => resource.data.category))];
+---
+
+<BaseLayout
+  title="Ressources | GenZ Africa"
+  description="Guides pratiques pour les étudiants et jeunes professionnels burkinabè: carrière, bourses, mobilité, recherche et vie professionnelle."
+>
+  <section class="page-hero compact-hero">
+    <div class="section-inner">
+      <span class="eyebrow">Bibliothèque utile</span>
+      <h1>Des ressources concrètes pour avancer sans attendre</h1>
+      <p>
+        Guides, méthodes et retours d’expérience pour mieux chercher, candidater, apprendre et construire son réseau.
+      </p>
+    </div>
+  </section>
+
+  <section class="section resources-section">
+    <SearchBar categories={categories} />
+    <p class="results-count" aria-live="polite"><span id="visible-count">{resources.length}</span> ressource(s) publiée(s)</p>
+    <div class="resource-grid" id="resource-grid">
+      {resources.map((resource) => <ResourceCard resource={resource} />)}
+    </div>
+    <p class="empty-state" id="empty-state" hidden>Aucune ressource ne correspond à cette recherche.</p>
+  </section>
+
+  <script>
+    const searchInput = document.querySelector("#resource-search");
+    const cards = [...document.querySelectorAll(".resource-card")];
+    const filterButtons = [...document.querySelectorAll(".filter-button")];
+    const visibleCount = document.querySelector("#visible-count");
+    const emptyState = document.querySelector("#empty-state");
+    let activeCategory = "all";
+
+    function normalize(value) {
+      return value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function filterResources() {
+      const query = normalize(searchInput.value.trim());
+      let count = 0;
+
+      cards.forEach((card) => {
+        const searchable = normalize([
+          card.dataset.title,
+          card.dataset.description,
+          card.dataset.category,
+          card.dataset.tags
+        ].join(" "));
+        const matchesSearch = searchable.includes(query);
+        const matchesCategory = activeCategory === "all" || card.dataset.category === activeCategory;
+        const isVisible = matchesSearch && matchesCategory;
+        card.hidden = !isVisible;
+        if (isVisible) count += 1;
+      });
+
+      visibleCount.textContent = count;
+      emptyState.hidden = count !== 0;
+    }
+
+    searchInput.addEventListener("input", filterResources);
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeCategory = button.dataset.category;
+        filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+        filterResources();
+      });
+    });
+  </script>
+</BaseLayout>

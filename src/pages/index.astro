@@ -1,0 +1,94 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import ResourceCard from "@components/ResourceCard.astro";
+
+const resources = (await getCollection("ressources", ({ data }) => data.published)).slice(0, 6);
+---
+
+<BaseLayout
+  title="GenZ Africa | Réseau d’entraide pour jeunes talents burkinabè"
+  description="GenZ Africa rassemble les étudiants et jeunes professionnels burkinabè autour des opportunités, du réseau et de l’apprentissage entre pairs."
+>
+  <section class="home-hero">
+    <div class="hero-content">
+      <span class="eyebrow">Communauté burkinabè, ambition africaine</span>
+      <h1>Le réseau d’entraide des étudiants et jeunes professionnels burkinabè</h1>
+      <p>
+        GenZ Africa rassemble les jeunes talents qui veulent apprendre, partager les opportunités et construire leur avenir sans attendre.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="/ressources/">Explorer les ressources</a>
+        <a class="button secondary" href="mailto:bousairou@gmail.com?subject=Rejoindre%20GenZ%20Africa&body=Bonjour%2C%0A%0AJe%20souhaite%20rejoindre%20GenZ%20Africa.%0A%0ANom%20%3A%20%0APr%C3%A9nom%20%3A%20%0AFili%C3%A8re%20d%27%C3%A9tude%20ou%20fonction%20%3A%20%0ANum%C3%A9ro%20WhatsApp%20%3A%20%0A%0AMerci.">
+          Rejoindre la communauté
+        </a>
+      </div>
+    </div>
+    <div class="hero-panel" aria-label="Manifeste GenZ Africa">
+      <p>
+        “On n’a pas encore le réseau des grands CEO de LinkedIn. Mais on a l’ambition, l’énergie et la dalle.”
+      </p>
+      <span>Avec ça, on construit le réseau dont on a besoin.</span>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="why-title">
+    <div class="section-heading">
+      <span class="eyebrow">Pourquoi GenZ Africa ?</span>
+      <h2 id="why-title">Un réseau qui transforme l’énergie en opportunités</h2>
+    </div>
+    <div class="feature-grid">
+      <article>
+        <span>01</span>
+        <h3>Briser l’isolement</h3>
+        <p>Créer des ponts entre étudiants, jeunes diplômés et talents qui avancent souvent seuls.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Apprendre des aînés</h3>
+        <p>Partager des retours d’expérience, Spaces X, témoignages et conseils qui évitent de repartir de zéro.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>Partager les opportunités</h3>
+        <p>Rendre visibles les bourses, stages, formations, projets et ressources qui peuvent changer un parcours.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section highlight-section" aria-labelledby="popular-title">
+    <div class="section-heading">
+      <span class="eyebrow">Ressources populaires</span>
+      <h2 id="popular-title">Des guides à lire maintenant</h2>
+    </div>
+    <div class="resource-grid">
+      {resources.map((resource) => <ResourceCard resource={resource} />)}
+    </div>
+  </section>
+
+  <section class="section audience-section" aria-labelledby="audience-title">
+    <div class="section-heading">
+      <span class="eyebrow">Pour qui ?</span>
+      <h2 id="audience-title">Une communauté pour celles et ceux qui veulent avancer</h2>
+    </div>
+    <div class="audience-list">
+      <span>Étudiants</span>
+      <span>Jeunes diplômés</span>
+      <span>Jeunes professionnels</span>
+      <span>Candidats aux bourses</span>
+      <span>Talents en recherche de stage</span>
+      <span>Jeunes en mobilité ou orientation</span>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div>
+      <span class="eyebrow">Passer à l’action</span>
+      <h2>Tu veux être acteur de ton avenir au lieu de rester spectateur ?</h2>
+    </div>
+    <a class="button primary inverse" href="mailto:bousairou@gmail.com?subject=Rejoindre%20GenZ%20Africa&body=Bonjour%2C%0A%0AJe%20souhaite%20rejoindre%20GenZ%20Africa.%0A%0ANom%20%3A%20%0APr%C3%A9nom%20%3A%20%0AFili%C3%A8re%20d%27%C3%A9tude%20ou%20fonction%20%3A%20%0ANum%C3%A9ro%20WhatsApp%20%3A%20%0A%0AMerci.">
+      Rejoindre GenZ Africa
+    </a>
+  </section>
+</BaseLayout>
+

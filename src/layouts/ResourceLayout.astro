@@ -1,0 +1,56 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import CategoryBadge from "@components/CategoryBadge.astro";
+import ResourceCard from "@components/ResourceCard.astro";
+
+const { entry, suggestions = [] } = Astro.props;
+const { title, description, category, author, authorUrl, date, readingTime, tags } = entry.data;
+const formattedDate = new Intl.DateTimeFormat("fr-FR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric"
+}).format(new Date(date));
+---
+
+<BaseLayout title={`${title} | GenZ Africa`} description={description}>
+  <article class="article-shell">
+    <a class="back-link" href="/ressources/">Retour aux ressources</a>
+    <header class="article-header">
+      <CategoryBadge label={category} />
+      <h1>{title}</h1>
+      <p>{description}</p>
+      <div class="article-meta" aria-label="Informations de publication">
+        {authorUrl ? (
+          <a class="author-link" href={authorUrl} target="_blank" rel="noreferrer">{author}</a>
+        ) : (
+          <span>{author}</span>
+        )}
+        <span>{formattedDate}</span>
+        <span>{readingTime}</span>
+      </div>
+      <div class="tag-list" aria-label="Tags">
+        {tags.map((tag) => <span>{tag}</span>)}
+      </div>
+    </header>
+    <div class="article-grid">
+      <aside class="toc" aria-label="Sommaire">
+        <strong>Sommaire</strong>
+        <slot name="toc" />
+      </aside>
+      <div class="prose">
+        <slot />
+      </div>
+    </div>
+  </article>
+  {suggestions.length > 0 && (
+    <section class="section related-section" aria-labelledby="suggestions-title">
+      <div class="section-heading">
+        <span class="eyebrow">Continuer à apprendre</span>
+        <h2 id="suggestions-title">Autres ressources utiles</h2>
+      </div>
+      <div class="resource-grid compact">
+        {suggestions.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+    </section>
+  )}
+</BaseLayout>
