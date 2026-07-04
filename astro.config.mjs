@@ -1,8 +1,8 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://genz-africa.github.io",
-  base: "/genz-africa/",
+  site: "https://Huzair43.github.io",
+  base: "/genZ-africa/",
   markdown: {
     shikiConfig: {
       theme: "github-light"

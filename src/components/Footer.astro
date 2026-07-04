@@ -1,12 +1,13 @@
 ---
+const base = import.meta.env.BASE_URL;
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <div class="footer-grid">
     <div>
-      <a class="brand footer-brand" href="/">
-        <img class="brand-logo" src="/images/logo.jpeg" alt="" width="44" height="44" />
+      <a class="brand footer-brand" href={base}>
+        <img class="brand-logo" src={`${base}images/logo.jpeg`} alt="" width="44" height="44" />
         <span>GenZ Africa</span>
       </a>
       <p>
@@ -15,9 +16,9 @@ const year = new Date().getFullYear();
     </div>
     <div>
       <h2>Navigation</h2>
-      <a href="/ressources/">Ressources</a>
-      <a href="/a-propos/">À propos</a>
-      <a href="/contact/">Contact</a>
+      <a href={`${base}ressources/`}>Ressources</a>
+      <a href={`${base}a-propos/`}>À propos</a>
+      <a href={`${base}contact/`}>Contact</a>
     </div>
     <div>
       <h2>Réseaux</h2>

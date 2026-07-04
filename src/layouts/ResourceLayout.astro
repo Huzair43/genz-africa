@@ -4,6 +4,7 @@ import CategoryBadge from "@components/CategoryBadge.astro";
 import ResourceCard from "@components/ResourceCard.astro";
 
 const { entry, suggestions = [] } = Astro.props;
+const base = import.meta.env.BASE_URL;
 const { title, description, category, author, authorUrl, date, readingTime, tags } = entry.data;
 const formattedDate = new Intl.DateTimeFormat("fr-FR", {
   day: "numeric",
@@ -14,7 +15,7 @@ const formattedDate = new Intl.DateTimeFormat("fr-FR", {
 
 <BaseLayout title={`${title} | GenZ Africa`} description={description}>
   <article class="article-shell">
-    <a class="back-link" href="/ressources/">Retour aux ressources</a>
+    <a class="back-link" href={`${base}ressources/`}>Retour aux ressources</a>
     <header class="article-header">
       <CategoryBadge label={category} />
       <h1>{title}</h1>

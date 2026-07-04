@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import ResourceCard from "@components/ResourceCard.astro";
 
+const base = import.meta.env.BASE_URL;
 const resources = (await getCollection("ressources", ({ data }) => data.published)).slice(0, 6);
 ---
 
@@ -18,7 +19,7 @@ const resources = (await getCollection("ressources", ({ data }) => data.publishe
         GenZ Africa rassemble les jeunes talents qui veulent apprendre, partager les opportunités et construire leur avenir sans attendre.
       </p>
       <div class="hero-actions">
-        <a class="button primary" href="/ressources/">Explorer les ressources</a>
+        <a class="button primary" href={`${base}ressources/`}>Explorer les ressources</a>
         <a class="button secondary" href="mailto:bousairou@gmail.com?subject=Rejoindre%20GenZ%20Africa&body=Bonjour%2C%0A%0AJe%20souhaite%20rejoindre%20GenZ%20Africa.%0A%0ANom%20%3A%20%0APr%C3%A9nom%20%3A%20%0AFili%C3%A8re%20d%27%C3%A9tude%20ou%20fonction%20%3A%20%0ANum%C3%A9ro%20WhatsApp%20%3A%20%0A%0AMerci.">
           Rejoindre la communauté
         </a>
