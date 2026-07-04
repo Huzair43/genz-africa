@@ -150,9 +150,7 @@ input {
 }
 
 .home-hero {
-  background:
-    linear-gradient(125deg, rgba(8, 47, 73, 0.96), rgba(29, 127, 173, 0.9)),
-    var(--hero-pattern);
+  background: linear-gradient(125deg, rgba(8, 47, 73, 0.96), rgba(29, 127, 173, 0.9));
   color: white;
   display: grid;
   gap: 2rem;
