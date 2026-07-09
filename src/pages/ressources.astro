@@ -8,6 +8,8 @@ const resources = (await getCollection("ressources", ({ data }) => data.publishe
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 const categories = [...new Set(resources.map((resource) => resource.data.category))];
+const workshops = resources.filter((resource) => resource.data.category === "Atelier");
+const otherResources = resources.filter((resource) => resource.data.category !== "Atelier");
 ---
 
 <BaseLayout
@@ -24,11 +26,26 @@ const categories = [...new Set(resources.map((resource) => resource.data.categor
     </div>
   </section>
 
+  {workshops.length > 0 && (
+    <section class="section workshop-section">
+      <div class="section-inner">
+        <span class="eyebrow">Atelier</span>
+        <h2>Ateliers pratiques avec résumé en PDF</h2>
+        <p>
+          Atelier animé par Ladif Faysal Gorgha : maîtrise du prompt engineering avec la méthode RCTFC, des templates pratiques et un résumé PDF disponible en téléchargement.
+        </p>
+      </div>
+      <div class="resource-grid">
+        {workshops.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+    </section>
+  )}
+
   <section class="section resources-section">
     <SearchBar categories={categories} />
     <p class="results-count" aria-live="polite"><span id="visible-count">{resources.length}</span> ressource(s) publiée(s)</p>
     <div class="resource-grid" id="resource-grid">
-      {resources.map((resource) => <ResourceCard resource={resource} />)}
+      {otherResources.map((resource) => <ResourceCard resource={resource} />)}
     </div>
     <p class="empty-state" id="empty-state" hidden>Aucune ressource ne correspond à cette recherche.</p>
   </section>

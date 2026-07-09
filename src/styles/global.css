@@ -317,6 +317,19 @@ h3 {
   margin: 1rem 0 0.65rem;
 }
 
+.resource-actions {
+  margin: 0.8rem 0;
+}
+
+.resource-actions .button.secondary {
+  background: transparent;
+  border: 1px solid var(--blue);
+  border-radius: var(--radius);
+  color: var(--blue);
+  display: inline-flex;
+  padding: 0.6rem 0.9rem;
+}
+
 .card-topline,
 .resource-card footer,
 .article-meta {

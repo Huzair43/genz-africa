@@ -10,13 +10,15 @@ const ressources = defineCollection({
       "Bourses",
       "Mobilité internationale",
       "Recherche & méthode",
-      "Vie professionnelle"
+      "Vie professionnelle",
+      "Atelier"
     ]),
     tags: z.array(z.string()).default([]),
     author: z.string().default("GenZ Africa"),
     authorUrl: z.string().url().optional(),
     date: z.string(),
     readingTime: z.string(),
+    pdf: z.string().optional(),
     published: z.boolean().default(false)
   })
 });
