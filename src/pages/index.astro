@@ -4,7 +4,9 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import ResourceCard from "@components/ResourceCard.astro";
 
 const base = import.meta.env.BASE_URL;
-const resources = (await getCollection("ressources", ({ data }) => data.published)).slice(0, 6);
+const allResources = await getCollection("ressources", ({ data }) => data.published);
+const resources = allResources.slice(0, 6);
+const categoryCount = new Set(allResources.map((resource) => resource.data.category)).size;
 ---
 
 <BaseLayout
@@ -12,9 +14,10 @@ const resources = (await getCollection("ressources", ({ data }) => data.publishe
   description="GenZ Africa rassemble les étudiants et jeunes professionnels burkinabè autour des opportunités, du réseau et de l’apprentissage entre pairs."
 >
   <section class="home-hero">
+    <div class="grain" aria-hidden="true"></div>
     <div class="hero-content">
       <span class="eyebrow">Communauté burkinabè, ambition africaine</span>
-      <h1>Le réseau d’entraide des étudiants et jeunes professionnels burkinabè</h1>
+      <h1>Le réseau d’<span class="accent">entraide</span> des étudiants et jeunes professionnels burkinabè</h1>
       <p>
         GenZ Africa rassemble les jeunes talents qui veulent apprendre, partager les opportunités et construire leur avenir sans attendre.
       </p>
@@ -33,7 +36,18 @@ const resources = (await getCollection("ressources", ({ data }) => data.publishe
     </div>
   </section>
 
-  <section class="section" aria-labelledby="why-title">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-group">
+        <span>Bourses</span><i>✦</i><span>Stages</span><i>✦</i><span>Campus France</span><i>✦</i><span>Visa &amp; mobilité</span><i>✦</i><span>Emploi</span><i>✦</i><span>Ateliers</span><i>✦</i><span>Prompt engineering</span><i>✦</i><span>Réseau</span><i>✦</i><span>Mentorat</span><i>✦</i>
+      </div>
+      <div class="marquee-group">
+        <span>Bourses</span><i>✦</i><span>Stages</span><i>✦</i><span>Campus France</span><i>✦</i><span>Visa &amp; mobilité</span><i>✦</i><span>Emploi</span><i>✦</i><span>Ateliers</span><i>✦</i><span>Prompt engineering</span><i>✦</i><span>Réseau</span><i>✦</i><span>Mentorat</span><i>✦</i>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" aria-labelledby="why-title" data-reveal>
     <div class="section-heading">
       <span class="eyebrow">Pourquoi GenZ Africa ?</span>
       <h2 id="why-title">Un réseau qui transforme l’énergie en opportunités</h2>
@@ -57,7 +71,13 @@ const resources = (await getCollection("ressources", ({ data }) => data.publishe
     </div>
   </section>
 
-  <section class="section highlight-section" aria-labelledby="popular-title">
+  <section class="stats-band" data-reveal aria-label="Chiffres clés">
+    <div class="stat"><strong data-count={allResources.length}>0</strong><span>guides publiés</span></div>
+    <div class="stat"><strong data-count={categoryCount}>0</strong><span>catégories</span></div>
+    <div class="stat"><strong data-count={100} data-suffix=" %">0</strong><span>gratuit, toujours</span></div>
+  </section>
+
+  <section class="section highlight-section" aria-labelledby="popular-title" data-reveal>
     <div class="section-heading">
       <span class="eyebrow">Ressources populaires</span>
       <h2 id="popular-title">Des guides à lire maintenant</h2>
@@ -67,7 +87,7 @@ const resources = (await getCollection("ressources", ({ data }) => data.publishe
     </div>
   </section>
 
-  <section class="section audience-section" aria-labelledby="audience-title">
+  <section class="section audience-section" aria-labelledby="audience-title" data-reveal>
     <div class="section-heading">
       <span class="eyebrow">Pour qui ?</span>
       <h2 id="audience-title">Une communauté pour celles et ceux qui veulent avancer</h2>
@@ -82,7 +102,7 @@ const resources = (await getCollection("ressources", ({ data }) => data.publishe
     </div>
   </section>
 
-  <section class="cta-band">
+  <section class="cta-band" data-reveal>
     <div>
       <span class="eyebrow">Passer à l’action</span>
       <h2>Tu veux être acteur de ton avenir au lieu de rester spectateur ?</h2>

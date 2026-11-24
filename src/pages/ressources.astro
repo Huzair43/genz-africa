@@ -27,7 +27,7 @@ const otherResources = resources.filter((resource) => resource.data.category !==
   </section>
 
   {workshops.length > 0 && (
-    <section class="section workshop-section">
+    <section class="section workshop-section" data-reveal>
       <div class="section-inner">
         <span class="eyebrow">Atelier</span>
         <h2>Ateliers pratiques avec résumé en PDF</h2>
@@ -41,7 +41,7 @@ const otherResources = resources.filter((resource) => resource.data.category !==
     </section>
   )}
 
-  <section class="section resources-section">
+  <section class="section resources-section" data-reveal>
     <SearchBar categories={categories} />
     <p class="results-count" aria-live="polite"><span id="visible-count">{otherResources.length}</span> ressource(s) publiée(s)</p>
     <div class="resource-grid" id="resource-grid">
