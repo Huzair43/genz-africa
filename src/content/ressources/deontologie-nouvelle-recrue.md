@@ -6,7 +6,6 @@ tags: ["emploi", "éthique", "professionnel", "intégration"]
 author: "Mohamed Ilboudo"
 authorUrl: "https://www.linkedin.com/in/mohamed-cheick-haroun-ilboudo-367658384"
 date: "2026-07-03"
-readingTime: "7 min"
 published: true
 ---
 

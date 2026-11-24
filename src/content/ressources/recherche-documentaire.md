@@ -6,7 +6,6 @@ tags: ["méthode", "recherche", "mémoire", "sources"]
 author: "Ladif Faysal Gorgha"
 authorUrl: "https://www.linkedin.com/in/ladif-faysal-gorgha-7a45b8365"
 date: "2026-07-03"
-readingTime: "10 min"
 published: true
 ---
 

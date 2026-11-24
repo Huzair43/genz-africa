@@ -6,7 +6,6 @@ tags: ["bourse", "Chine", "CSC", "candidature"]
 author: "Ousaïrou Bagagnan"
 authorUrl: "https://www.linkedin.com/in/ousairou-bagagnan-65b388384"
 date: "2026-07-03"
-readingTime: "10 min"
 published: true
 ---
 

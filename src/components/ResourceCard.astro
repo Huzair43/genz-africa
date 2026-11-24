@@ -1,9 +1,16 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import CategoryBadge from "@components/CategoryBadge.astro";
+import { getReadingTime } from "@utils/reading-time";
+
+interface Props {
+  resource: CollectionEntry<"ressources">;
+}
 
 const base = import.meta.env.BASE_URL;
 const { resource } = Astro.props;
-const { title, description, category, tags, readingTime, author, authorUrl, date, pdf } = resource.data;
+const { title, description, category, tags, author, authorUrl, date, pdf } = resource.data;
+const readingTime = resource.data.readingTime ?? getReadingTime(resource.body);
 const formattedDate = new Intl.DateTimeFormat("fr-FR", {
   day: "numeric",
   month: "short",

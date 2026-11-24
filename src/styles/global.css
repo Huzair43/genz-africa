@@ -12,7 +12,12 @@
   --shadow: 0 18px 45px rgba(8, 47, 73, 0.1);
   --radius: 8px;
   --max: 1120px;
-  color-scheme: light;
+  --navy-deep: #082f49;
+  --header-bg: rgba(246, 249, 251, 0.92);
+  --prose-ink: #28342e;
+  --badge-bg: #dff3fb;
+  --on-accent: #ffffff;
+  color-scheme: light dark;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -54,7 +59,7 @@ input {
 }
 
 .skip-link {
-  background: var(--navy);
+  background: var(--navy-deep);
   color: white;
   left: 1rem;
   padding: 0.65rem 1rem;
@@ -68,7 +73,7 @@ input {
 }
 
 .site-header {
-  background: rgba(246, 249, 251, 0.92);
+  background: var(--header-bg);
   border-bottom: 1px solid var(--line);
   position: sticky;
   top: 0;
@@ -96,7 +101,7 @@ input {
 
 .brand-logo {
   align-items: center;
-  background: white;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 50%;
   box-shadow: 0 8px 20px rgba(8, 47, 73, 0.12);
@@ -136,7 +141,7 @@ input {
 .nav-cta,
 .button.primary {
   background: var(--blue);
-  color: white;
+  color: var(--on-accent);
 }
 
 .button.secondary {
@@ -146,7 +151,7 @@ input {
 
 .button.inverse {
   background: white;
-  color: var(--navy);
+  color: var(--navy-deep);
 }
 
 .home-hero {
@@ -365,7 +370,7 @@ h3 {
 }
 
 .category-badge {
-  background: var(--sky);
+  background: var(--badge-bg);
   border-radius: 999px;
   color: var(--navy);
   display: inline-flex;
@@ -402,7 +407,7 @@ h3 {
 
 .audience-list span {
   background: var(--ice);
-  border: 1px solid #c4e3f1;
+  border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--navy);
   font-weight: 800;
@@ -411,7 +416,7 @@ h3 {
 
 .cta-band {
   align-items: center;
-  background: var(--navy);
+  background: var(--navy-deep);
   color: white;
   display: flex;
   gap: 2rem;
@@ -427,7 +432,7 @@ h3 {
 }
 
 .filters-panel {
-  background: white;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -442,7 +447,9 @@ h3 {
 }
 
 #resource-search {
+  background: var(--surface);
   border: 1px solid var(--line);
+  color: var(--ink);
   border-radius: var(--radius);
   min-height: 3rem;
   padding: 0.75rem 0.9rem;
@@ -473,7 +480,7 @@ a:focus-visible {
 }
 
 .filter-button.active {
-  background: var(--navy);
+  background: var(--navy-deep);
   color: white;
 }
 
@@ -519,7 +526,7 @@ a:focus-visible {
 }
 
 .toc {
-  background: white;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 1rem;
@@ -543,7 +550,7 @@ a:focus-visible {
 }
 
 .prose {
-  background: white;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -560,7 +567,7 @@ a:focus-visible {
 }
 
 .prose p {
-  color: #28342e;
+  color: var(--prose-ink);
   font-size: 1.06rem;
   margin-bottom: 1.15rem;
 }
@@ -573,7 +580,7 @@ a:focus-visible {
 
 .prose ul,
 .prose ol {
-  color: #28342e;
+  color: var(--prose-ink);
   margin: 0 0 1.35rem;
   padding-left: 1.35rem;
 }
@@ -661,7 +668,7 @@ a:focus-visible {
 }
 
 .contact-card.featured {
-  background: var(--navy);
+  background: var(--navy-deep);
   color: white;
 }
 
@@ -671,7 +678,7 @@ a:focus-visible {
 }
 
 .site-footer {
-  background: var(--navy);
+  background: var(--navy-deep);
   color: white;
   margin-top: 4rem;
   padding: 3rem 1.25rem 1.5rem;
@@ -812,5 +819,29 @@ a:focus-visible {
 
   .hero-panel p {
     font-size: 1.1rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a141d;
+    --surface: #132536;
+    --ink: #e9f2f8;
+    --muted: #9db4c4;
+    --line: #26425c;
+    --blue: #5cb8e0;
+    --navy: #a9d6ee;
+    --sky: #dff3fb;
+    --blue-dark: #7cc8e8;
+    --ice: rgba(92, 184, 224, 0.12);
+    --shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+    --header-bg: rgba(10, 20, 29, 0.92);
+    --prose-ink: #d7e5ee;
+    --badge-bg: rgba(92, 184, 224, 0.16);
+    --on-accent: #082f49;
+  }
+
+  .home-hero {
+    background: linear-gradient(125deg, rgba(8, 47, 73, 0.97), rgba(15, 90, 128, 0.94));
   }
 }

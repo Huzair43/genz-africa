@@ -1,11 +1,19 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import CategoryBadge from "@components/CategoryBadge.astro";
+import type { CollectionEntry } from "astro:content";
 import ResourceCard from "@components/ResourceCard.astro";
+import { getReadingTime } from "@utils/reading-time";
+
+interface Props {
+  entry: CollectionEntry<"ressources">;
+  suggestions?: CollectionEntry<"ressources">[];
+}
 
 const { entry, suggestions = [] } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const { title, description, category, author, authorUrl, date, readingTime, tags } = entry.data;
+const { title, description, category, author, authorUrl, date, tags } = entry.data;
+const readingTime = entry.data.readingTime ?? getReadingTime(entry.body);
 const formattedDate = new Intl.DateTimeFormat("fr-FR", {
   day: "numeric",
   month: "long",

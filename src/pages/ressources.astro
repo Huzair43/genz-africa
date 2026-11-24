@@ -51,28 +51,30 @@ const otherResources = resources.filter((resource) => resource.data.category !==
   </section>
 
   <script>
-    const searchInput = document.querySelector("#resource-search");
-    const cards = [...document.querySelectorAll("#resource-grid .resource-card")];
-    const filterButtons = [...document.querySelectorAll(".filter-button")];
-    const visibleCount = document.querySelector("#visible-count");
-    const emptyState = document.querySelector("#empty-state");
+    const searchInput = document.querySelector<HTMLInputElement>("#resource-search");
+    const cards = [...document.querySelectorAll<HTMLElement>("#resource-grid .resource-card")];
+    const filterButtons = [...document.querySelectorAll<HTMLButtonElement>(".filter-button")];
+    const visibleCount = document.querySelector<HTMLElement>("#visible-count");
+    const emptyState = document.querySelector<HTMLElement>("#empty-state");
+
+    if (!searchInput || !visibleCount || !emptyState) {
+      throw new Error("Éléments de la recherche introuvables");
+    }
+
     let activeCategory = "all";
 
-    function normalize(value) {
+    function normalize(value: string) {
       return value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
 
-    function filterResources() {
+    const filterResources = () => {
       const query = normalize(searchInput.value.trim());
       let count = 0;
 
       cards.forEach((card) => {
-        const searchable = normalize([
-          card.dataset.title,
-          card.dataset.description,
-          card.dataset.category,
-          card.dataset.tags
-        ].join(" "));
+        const searchable = normalize(
+          [card.dataset.title, card.dataset.description, card.dataset.category, card.dataset.tags].join(" ")
+        );
         const matchesSearch = searchable.includes(query);
         const matchesCategory = activeCategory === "all" || card.dataset.category === activeCategory;
         const isVisible = matchesSearch && matchesCategory;
@@ -80,14 +82,14 @@ const otherResources = resources.filter((resource) => resource.data.category !==
         if (isVisible) count += 1;
       });
 
-      visibleCount.textContent = count;
+      visibleCount.textContent = String(count);
       emptyState.hidden = count !== 0;
-    }
+    };
 
     searchInput.addEventListener("input", filterResources);
     filterButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        activeCategory = button.dataset.category;
+        activeCategory = button.dataset.category ?? "all";
         filterButtons.forEach((item) => item.classList.toggle("active", item === button));
         filterResources();
       });
