@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#082f49"/>
+      <stop offset="1" stop-color="#1d7fad"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1060" cy="80" r="190" fill="rgba(255,255,255,0.06)"/>
+  <circle cx="1120" cy="560" r="120" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="110" cy="570" r="150" fill="rgba(255,255,255,0.05)"/>
+  <text x="80" y="290" font-family="Inter, Arial, sans-serif" font-size="96" font-weight="800" fill="#ffffff">GenZ Africa</text>
+  <text x="80" y="385" font-family="Inter, Arial, sans-serif" font-size="34" fill="rgba(255,255,255,0.85)">Le r&#xE9;seau d&#x2019;entraide des &#xE9;tudiants et jeunes</text>
+  <text x="80" y="435" font-family="Inter, Arial, sans-serif" font-size="34" fill="rgba(255,255,255,0.85)">professionnels burkinab&#xE8;</text>
+  <rect x="80" y="485" rx="10" ry="10" width="590" height="58" fill="rgba(255,255,255,0.14)"/>
+  <text x="106" y="523" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#dff3fb">Communaut&#xE9; burkinab&#xE8;, ambition africaine</text>
+</svg>

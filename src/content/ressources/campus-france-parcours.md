@@ -6,7 +6,6 @@ tags: ["Campus France", "visa", "études", "mobilité"]
 author: "Jean-Marie Aurélien SILGA"
 authorUrl: "https://www.linkedin.com/in/jean-marie-aurelien-silga"
 date: "2026-07-03"
-readingTime: "16 min"
 published: true
 ---
 

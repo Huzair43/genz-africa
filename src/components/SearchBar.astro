@@ -1,5 +1,9 @@
 ---
-const categories = Astro.props.categories ?? [];
+interface Props {
+  categories: string[];
+}
+
+const { categories = [] } = Astro.props;
 ---
 
 <section class="filters-panel" aria-label="Recherche et filtres">

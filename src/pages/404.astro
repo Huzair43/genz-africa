@@ -1,0 +1,22 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page introuvable | GenZ Africa"
+  description="Cette page n'existe pas (ou plus). Retournez à l'accueil ou explorez les ressources de GenZ Africa."
+>
+  <section class="page-hero">
+    <div class="section-inner">
+      <span class="eyebrow">Erreur 404</span>
+      <h1>Cette page n'existe pas (ou plus)</h1>
+      <p>
+        Le lien est peut-être cassé ou la page a été déplacée. Pas de souci : les ressources utiles sont à un clic.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href={import.meta.env.BASE_URL}>Retour à l'accueil</a>
+        <a class="button secondary" style="border-color: var(--blue); color: var(--blue);" href={`${import.meta.env.BASE_URL}ressources/`}>Voir les ressources</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

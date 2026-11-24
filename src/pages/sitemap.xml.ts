@@ -1,11 +1,11 @@
 import { getCollection } from "astro:content";
+import type { APIContext } from "astro";
 
-const base = import.meta.env.BASE_URL;
 const staticPages = ["/", "/ressources/", "/a-propos/", "/contact/"];
 
-export async function GET({ site }) {
+export async function GET({ site }: APIContext) {
   const resources = await getCollection("ressources", ({ data }) => data.published);
-  const baseUrl = site ?? new URL("https://Huzair43.github.io");
+  const baseUrl = site ?? new URL("https://genz-africa.com");
   const urls = [
     ...staticPages,
     ...resources.map((resource) => `/ressources/${resource.slug}/`)

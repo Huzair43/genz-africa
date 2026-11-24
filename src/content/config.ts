@@ -17,7 +17,7 @@ const ressources = defineCollection({
     author: z.string().default("GenZ Africa"),
     authorUrl: z.string().url().optional(),
     date: z.string(),
-    readingTime: z.string(),
+    readingTime: z.string().optional(),
     pdf: z.string().optional(),
     published: z.boolean().default(false)
   })

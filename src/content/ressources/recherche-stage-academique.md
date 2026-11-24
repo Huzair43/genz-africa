@@ -6,7 +6,6 @@ tags: ["stage", "emploi", "étudiants", "carrière"]
 author: "Yâssine OUEDRAOGO"
 authorUrl: "https://www.linkedin.com/in/y%C3%A2ssine-chamakh-abessolo-ouedraogo-2418a2384"
 date: "2026-07-03"
-readingTime: "10 min"
 published: true
 ---
 
